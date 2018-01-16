@@ -197,8 +197,7 @@ public class ResEffect : MonoBehaviour
 	/// <param name="target">终点坐标-世界坐标</param>
 	/// <param name="count">粒子数量</param>
 	/// <param name="onFinish">完成后回调</param>
-	/// <returns>播放时长</returns>
-	public float Play(int type, Vector3 source, Vector3 target, int count, System.Action<int> onFinish)
+	public void Play(int type, Vector3 source, Vector3 target, int count, System.Action<int> onFinish)
 	{
 		Debug.Log("播放特效 Play count="+count);
 		/// <summary>
@@ -213,7 +212,6 @@ public class ResEffect : MonoBehaviour
 		// 飞行时长
 		float flyTime = (target - source).magnitude / moveSpeed;
 		StartCoroutine(OnAnimation(flyTime, type, source, target, count, rate, radius, onFinish));
-		return flyTime;
 	}
 
 	public void Init(GameObject _gameObjectPool, List<GameObject> prefabList)
